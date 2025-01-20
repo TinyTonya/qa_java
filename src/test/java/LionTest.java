@@ -1,26 +1,22 @@
-import com.example.Lion;
 import com.example.Feline;
+import com.example.Lion;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-@RunWith(Parameterized.class)
 public class LionTest {
 
     @Mock
-    private Feline feline;
+    protected Feline feline;
 
-    private Lion lion;
+    protected Lion lion;
 
     @Before
     public void init() throws Exception {
@@ -59,28 +55,5 @@ public class LionTest {
             fail("Нет ожидаемого исключения");
         } catch (Exception e) {
         }
-    }
-
-    @Parameterized.Parameters
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-                {5, 5},
-                {1, 1},
-                {10, 10}
-        });
-    }
-
-    private int kittensCount;
-    private int expectedKittensCount;
-
-    public LionTest(int kittensCount, int expectedKittensCount) {
-        this.kittensCount = kittensCount;
-        this.expectedKittensCount = expectedKittensCount;
-    }
-
-    @Test
-    public void testGetKittensWithParameter() throws Exception {
-        when(feline.getKittens()).thenReturn(kittensCount);
-        assertEquals(expectedKittensCount, lion.getKittens());
     }
 }
