@@ -48,12 +48,8 @@ public class LionTest {
         assertFalse(lion.doesHaveMane());
     }
 
-    @Test
-    public void testDoesHaveManeExceptionForInvalidSex() {
-        try {
+    @Test(expected = Exception.class)
+    public void testDoesHaveManeExceptionForInvalidSex() throws Exception {
             new Lion("Львенок", feline);
-            fail("Нет ожидаемого исключения");
-        } catch (Exception e) {
-        }
     }
 }
